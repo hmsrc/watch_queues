@@ -5,9 +5,10 @@ A simple [ulgly] shell [hack] to display information about what's running and ho
 
 Affiliation: 
 
-Research Computing
-Harvard Medical School
-107 Avenue Louis Pasteur, Room 105, Boston MA 02115-5701
+Research Computing<br>
+Harvard Medical School<br>
+107 Avenue Louis Pasteur Room 105 <br>
+Boston MA 02115-5701
 
 Contact: botka@hms.harvard.edu, peter_doherty@hms.harvard.edu
 
