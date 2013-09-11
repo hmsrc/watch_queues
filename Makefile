@@ -13,6 +13,6 @@ watch_queues: watch_queues.c
 get_runlimits: get_runlimits.c
 	gcc -o $@ $< $(INCLUDES) $(ARCHIVES) $(LIBS)
 
-watch_queues2: watch_queues2.c
+watch_queues2: watch_queues2.c dispatch_time.h hosts.h print_queues.h resource.h slots.h
 	gcc -o $@ $< $(INCLUDES) $(ARCHIVES) $(LIBS)
 

@@ -4,6 +4,7 @@ struct host_slots{
   int sixtyfour;
   int thirtytwo;
   int sixteen;
+  int less_than_two;
 };
 
 /* find shared and total slot usage, and return hosts memory availability information */
@@ -16,7 +17,7 @@ struct host_slots hosts(){
     char *hostname ;
     int numHosts = 1;
     struct hostInfo *lsHostInfo;
-    int free_range[3];
+    int free_range[4];
     int TOTAL_SLOTS;
     int SHARED_SLOTS;
 
@@ -24,7 +25,7 @@ struct host_slots hosts(){
     
     TOTAL_SLOTS = 0;
     SHARED_SLOTS = 0;
-    free_range[0]=free_range[1]=free_range[2]=0;
+    free_range[0]=free_range[1]=free_range[2]=free_range[3] = 0;
 
     /* bhost equivalent to get total of shared job slots */
     /* see: https://wiki.med.harvard.edu/doc/lsf/api_ref/lsb_hostinfo.html */
@@ -34,6 +35,7 @@ struct host_slots hosts(){
       lsb_perror("simbhosts: lsb_hostinfo() failed");
       exit (-1);
     }
+    printf("Total hosts from hosts() is %d\n", numHosts); 
 
 
     /* loop over hosts, exclude unavail state */
@@ -56,6 +58,8 @@ struct host_slots hosts(){
 	    free_range[1]++;}
 	  else if ( hInfo[j].load[10] > 16384){
 	    free_range[2]++;}
+	  else if ( hInfo[j].load[10] < 2048){ /* No memory left */
+	    free_range[3]++;}
 
 
 	} /* if is ok busy full or exclusive */
@@ -67,6 +71,6 @@ struct host_slots hosts(){
 
     }
 
-    struct host_slots retval = {SHARED_SLOTS,TOTAL_SLOTS,free_range[0],free_range[1],free_range[2]};
+    struct host_slots retval = {SHARED_SLOTS,TOTAL_SLOTS,free_range[0],free_range[1],free_range[2],free_range[3]};
     return retval;
 }

@@ -10,7 +10,7 @@ void dispatch_times()
 
   int queue_time;
 
-  myfile = fopen ("/scratch/last_dispatch_test.txt", "rt");  /* open the file for reading */
+  myfile = fopen ("/hms/scratch1/last_dispatch_test.txt", "rt");  /* open the file for reading */
   fscanf(myfile,"%s %s %s\n",queue,&dispatch_month,&dispatch_time);
 
   printf("%s\t%s %s\n","Last queue dispatch test was:",dispatch_month,dispatch_time);  

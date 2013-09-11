@@ -45,7 +45,7 @@ int main (argc, argv)
     /* values referenced as run.xxxx, hosts.xxxx, shared.xxxxx */
     struct run_values run = print_queues();
     struct host_slots hslots = hosts();
-    struct slot_info hmemory = slots();
+    struct slot_info hmemory =slots();
 
   
     printf("\n\nHOST GROUP\t\tJOBS/SLOTS\tUTILIZATION\n");
@@ -77,13 +77,15 @@ int main (argc, argv)
     printf("-------------------------------------------------------------------\n");
     printf("%s\t\t\t%d\n","Compute nodes:",hmemory.total_hosts);
     printf("%s\t%d\n","Nodes with 12 free slots:",hmemory.free_12);
-    printf("%s\t%d\n","Nodes with 8 free slots:",hmemory.free_8);
-    printf("%s\t%d\n","Nodes with 4 free slots:",hmemory.free_4);
+    printf("%s\t%d\n","Nodes with 8  free slots:",hmemory.free_8);
+    printf("%s\t%d\n","Nodes with 4  free slots:",hmemory.free_4);
+    printf("%s\t%d\n","Nodes with NO free slots:",hmemory.free_0);
     printf("\n");
 
     printf("%s\t%d\n","Nodes with more than 64GB available memory:",hslots.sixtyfour);
     printf("%s\t%d\n","Nodes with more than 32GB available memory:",hslots.thirtytwo);
     printf("%s\t%d\n","Nodes with more than 16GB available memory:",hslots.sixteen);
+    printf("%s\t%d\n","Nodes with LESS than 2 GB available memory:",hslots.less_than_two);
     printf("\n");
     printf("%s%d\n","Available Matlab Distributed Computing licences: ",get_matlab_resource() );
     printf("\n");
